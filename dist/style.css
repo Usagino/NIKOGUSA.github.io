@@ -180,7 +180,7 @@ body {
   -webkit-text-size-adjust: none;
   -ms-text-size-adjust: 100%;
   line-height: 1.6;
-  font-family: Arial, "Hiragino Kaku Gothic ProN", "\30D2\30E9\30AE\30CE\89D2\30B4   ProN W3", "\30E1\30A4\30EA\30AA", Meiryo, sans-serif;
+  font-family: Arial, "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "メイリオ", Meiryo, sans-serif;
   font-size: 16px;
   position: relative;
   overflow-x: hidden; }
