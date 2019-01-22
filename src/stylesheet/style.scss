@@ -1,0 +1,48 @@
+@import "_variable.scss";
+@import "_animation.scss";
+@import "_reset.scss";
+@import "_responsive.scss";
+
+
+h1{
+  font-family: 'Open Sans', sans-serif;
+  color: $black;
+  font-weight: bold;
+}
+#contents{
+  background: #F5F9F7;
+}
+#contents{
+  .firstview{
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    &__title{
+      position: absolute;
+      top: 0;bottom: 0;
+      margin: auto;
+      left: 10%;
+      display: inline-block;
+      height: 30%;
+
+      h1{
+        line-height: 8rem;
+        font-size: 128px;
+      }
+    }
+    &__img{
+      position: absolute;
+      bottom: 0;
+      right: -20%;
+      margin: auto;
+      width: 828px;
+      height: auto;
+    }
+  }
+  @import "_pintalest.scss";
+  .products{
+    padding: 40px;
+    width: 80%;
+    margin: auto;
+  }
+}
