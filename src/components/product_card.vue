@@ -1,5 +1,6 @@
 <template lang="pug">
 .product
+
 	.product__wrap
 		.product__wrap__imgbox
 			img(:src="img")
@@ -22,6 +23,7 @@ export default {
 .product {
     max-width: 350px;
     margin: 1rem 0;
+
     &__wrap {
         &__imgbox {
             img {

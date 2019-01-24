@@ -1,6 +1,7 @@
 $white: #ffffff;
 $gray: #d6d6d6;
 $black:#080808;
+$green: #21aa4b;
 $twitter: #55acee;
 $instagram: #D93177;
 $youtube: #cd201f;
@@ -117,7 +118,8 @@ h1,
 h2,
 h3,
 li,
-p {
+p,
+input {
   color: $white;
   color: $black;
 

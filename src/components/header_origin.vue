@@ -3,7 +3,7 @@ header
   .header
     .header__title
       h1 MIDORIYA NIKOGUSA
-    .header__icons
+    .header__icons(v-on:click="menu")
       .header__icons__cart.header__icons__icon
         img(src="material/cart.svg")
       .header__icons__menu.header__icons__icon
@@ -12,7 +12,13 @@ header
 </template>
 
 <script>
+
 export default {
+  methods: {
+    menu(){
+      this.$emit('hoge');
+    }
+  }
 }
 </script>
 
@@ -31,6 +37,14 @@ header{
     width: 100vw;
     &__title{
       h1{
+        padding: 0;
+        border: none;
+        border-radius: 0;
+        outline: none;
+        background: none;
+        font-size: 2rem;
+        font-family: 'Open Sans', sans-serif;
+        color: $black;
         font-weight: bold;
       }
     }
