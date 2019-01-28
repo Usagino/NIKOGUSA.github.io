@@ -2,7 +2,7 @@
 @import "_animation.scss";
 @import "_reset.scss";
 @import "_responsive.scss";
-
+@import "_pintalest.scss";
 body{
   background: #e0ffd6;
 }
@@ -29,6 +29,7 @@ main{
     height: 100%;
     flex-direction: column;
     li{
+      cursor: pointer;
       padding: 1rem;
       font-size: 4rem;
       font-weight: bold;
@@ -36,10 +37,11 @@ main{
   }
 }
 #contents{
+
   .firstview{
     position: relative;
     height: 100vh;
-    width: 100vw;
+      width: 100%;
     &__title{
       position: absolute;
       top: 0;bottom: 0;
@@ -49,6 +51,7 @@ main{
       height: 30%;
 
       h1{
+        color: $white;
         line-height: 8rem;
         font-size: 128px;
       }
@@ -62,10 +65,144 @@ main{
       height: 80vh;
     }
   }
-  @import "_pintalest.scss";
+
   .products{
     padding: 40px;
     width: 80%;
     margin: auto;
+  }
+
+  .productcard{
+    @include display-center;
+    padding-top: 10vh;
+    height: 90vh;
+    width: 100vw;
+    position: relative;
+    &__wrap{
+      box-shadow: 40px 40px 0px #00000030;
+      top: 0;bottom: 0;
+      left: 0;right: 0;
+      margin: auto;
+      z-index: 2;
+
+      border-radius: 1rem;
+      overflow: hidden;
+      width: 75%;
+      height: 70%;
+      background: $white;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-areas: "image interface interface";
+      img{
+        grid-area: image;
+        width: 100%;height: 100%;
+        -o-object-fit: cover;
+        object-fit: cover;
+      }
+      &__interface{
+        @include display-center;
+        grid-area: interface;
+        &__box{
+          height: 80%;
+          width: 80%;
+          display: flex;
+          justify-content: space-around;
+          flex-direction: column;
+          &--title{
+            font-weight: lighter;
+            font-family: "Sawarabi Mincho";
+            font-size:2vw;
+          }
+          &--price{
+            font-size:5vw;
+          }
+          &__cart{
+            width: 100%;
+            height: 10rem;
+            border:solid 1px #E5E5E5;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            &__increase{
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: space-between;
+              width: 10rem;
+              border-radius: 100px;
+              box-shadow: 3px 3px 4px #59595950;
+              padding: 0 1rem;
+              @mixin bar{
+                position: absolute;
+                width: 1.5rem;
+                height: 2px;
+                top: 0;bottom:0;
+                left: 0;right: 0;
+                margin: auto;
+                background: #6e6e6e;
+              }
+              &--plus{
+                width: 32px;
+                height: 32px;
+                position: relative;
+                span{
+                  @include bar;
+                  &:nth-child(2){
+                    transform: rotate(90deg);
+                    transform-origin: center center;
+                  }
+                }
+                &:active + .productcard__wrap__interface__box__cart__increase{
+                  background: red;
+                }
+              }
+              &--count{
+                display: inline-block;
+                h1{
+                  display: inline-block;
+                }
+              }
+              &--minus{
+                width: 32px;
+                height: 32px;
+                position: relative;
+                span{
+                  @include bar;
+                }
+              }
+            }
+            svg{
+              height: 60px;
+              width: auto;
+            }
+          }
+        }
+      }
+    }
+    &__shadow{
+      z-index: 1;
+      width: 75%;
+      height: 70%;
+      background: red;
+      position: absolute;
+      $rad:(30%/75%);
+      transform: rotate( #{$rad}rad );
+      transform-origin: top right;
+
+    }
+  }
+
+  .voice{
+    padding: 15rem 0 5rem;
+    text-align: center;
+    width: 50%;
+    margin: auto;
+    h1{
+      color: $white;
+    }
+    hr{
+      border: solid 2px #ffffff;
+    }
   }
 }

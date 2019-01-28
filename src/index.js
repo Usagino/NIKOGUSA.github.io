@@ -1,10 +1,13 @@
 import {TweenMax} from 'gsap';
 import Vue from 'vue';
 import VueCarousel from 'vue-carousel';
-
 import inView from '../node_modules/in-view/dist/in-view.min.js';
 import header_origin from './components/header_origin.vue';
 import product from './components/product_card.vue';
+import carticon from './components/carticon.vue';
+import shop from './components/shop.vue';
+import customer from './components/customer.vue';
+
 let tl = new TimelineMax();
 Vue.use(VueCarousel);
 let $ = require('jQuery');
@@ -15,25 +18,25 @@ new Vue({
     'carousel': VueCarousel.Carousel,
     'slide': VueCarousel.Slide,
     'header-origin': header_origin,
-    'product': product
+    'product': product,
+    'carticon': carticon,
+    'shop': shop,
+    'customer':customer
   },
 });
-
 let header_speed = 0.2;
 // <header>のアニメーション
 inView('.products')
   .on('enter', el => {
-    TweenMax.to('.header', header_speed, {　y: -40　});
+    // TweenMax.to('.header', header_speed, {　y: -40　});
     TweenMax.to('.header__title', header_speed, {　x: -160,　opacity: 0　});
-    TweenMax.to('.header__icons', header_speed, {　x: 200　});
+    TweenMax.to('.header__icons', header_speed, {　x: 100　});
   })
   .on('exit', el => {
     TweenMax.to('.header', header_speed, {　y: 0　});
     TweenMax.to('.header__title', header_speed, { x: 0, opacity: 1 });
     TweenMax.to('.header__icons', header_speed, { x: 0 });
-
   });
-
 // <products>の中に格納されてるDOMを取得してproductsに配列として代入している
 let products = document.getElementsByClassName("product");
 console.log(`要素は${products.length}コ`);
@@ -52,15 +55,34 @@ let toggle = true;
 $('.header__icons__menu').click(function(event) {
   if (toggle == true) {
     TweenMax.to('main',0.5,{ x:-400});
-    TweenMax.to('.header__icons__menu--bar1',0.5,{y:6,rotation:90});
-    TweenMax.to('.header__icons__menu--bar2',0.5,{y:-6});
+    TweenMax.to('.header__icons__menu--bar1',0.5,{y:6,rotation:90,borderColor:"#000000"});
+    TweenMax.to('.header__icons__menu--bar2',0.5,{y:-6,borderColor:"#000000"});
     TweenMax.to('.header__icons__menu',0.5,{rotation:45});
+    TweenMax.to('#cart',0.5,{fill:"#000000"});
     toggle = false;
   }else {
     TweenMax.to('main',0.5,{ x:0});
-    TweenMax.to('.header__icons__menu--bar1',0.5,{y:0,rotation:0});
-    TweenMax.to('.header__icons__menu--bar2',0.5,{y:0});
+    TweenMax.to('.header__icons__menu--bar1',0.5,{
+      y:0,
+      rotation:0,
+      borderColor:"#ffffff"
+    });
+    TweenMax.to('.header__icons__menu--bar2',0.5,{
+      y:0,
+      borderColor:"#ffffff"
+    });
     TweenMax.to('.header__icons__menu',0.5,{rotation:0});
+    TweenMax.to('#cart',0.5,{fill:"#ffffff"});
     toggle = true;
   }
 });
+// TweenMax.set(".talk__wrap",{opacity:0});
+if ($(".voice").length == 1) {
+  inView('.talk__wrap')
+    .on('enter', el => {
+      el.classList.add('opacity');
+    })
+    .on('exit', el => {
+      el.classList.remove('opacity');
+    });
+}

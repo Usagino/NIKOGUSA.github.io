@@ -1,13 +1,14 @@
 <template lang="pug">
 .product
-
-	.product__wrap
-		.product__wrap__imgbox
-			img(:src="img")
-		.product__wrap__text
-			p.product__wrap__text__price ¥{{price}}
-			p.product__wrap__text__name {{name}}
-			p.product__wrap__text__tag 盆栽
+	a(href="product.html")
+		.product__wrap
+			.product__wrap__imgbox
+				img(:src="img")
+			.product__wrap__text
+				p.product__wrap__text__price ¥{{price}}
+				p.product__wrap__text__name {{name}}
+				.product__wrap__text__tag
+					p 盆栽
 </template>
 
 <script>
@@ -47,7 +48,7 @@ export default {
           flex-direction: column;
           justify-content: space-around;
           height: auto;
-          width: 100%;
+          width: auto;
           & > *{
 						padding: .3rem 0;
           }
@@ -57,11 +58,16 @@ export default {
           &__name {
               }
           &__tag {
-              font-size: 0.8rem;
+
               padding: 0.1rem 1rem;
               border: solid 0.5px #080808;
-              display: inline-table;
+              display: inline-block;
               border-radius: 100px;
+							width: 3rem;
+							@include display-center;
+							p{
+								font-size: 0.8rem;
+							}
           }
         }
     }
