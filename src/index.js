@@ -1,12 +1,13 @@
 import {TweenMax} from 'gsap';
 import Vue from 'vue';
 import VueCarousel from 'vue-carousel';
-import $ from "jquery";
+
 import inView from '../node_modules/in-view/dist/in-view.min.js';
 import header_origin from './components/header_origin.vue';
 import product from './components/product_card.vue';
-let tl = new TimelineMax({repeat:-1});
+let tl = new TimelineMax();
 Vue.use(VueCarousel);
+let $ = require('jQuery');
 
 new Vue({
   el: "#contents",
@@ -16,12 +17,6 @@ new Vue({
     'header-origin': header_origin,
     'product': product
   },
-  methods: {
-    hoge(){
-      console.log("hoge");
-      TweenMax('.header__icons__menu',1,{ x:200 });
-  　}
-  }
 });
 
 let header_speed = 0.2;
@@ -53,6 +48,19 @@ for (let n = 0; n < products.length; n++) {
   product_pos.push(product_top_pos);
 }
 
-$('.header__icons__menu').on('click',()=> {
-  TweenMax('.header__icons__menu', 0.5 ,{ x:200 });
+let toggle = true;
+$('.header__icons__menu').click(function(event) {
+  if (toggle == true) {
+    TweenMax.to('main',0.5,{ x:-400});
+    TweenMax.to('.header__icons__menu--bar1',0.5,{y:6,rotation:90});
+    TweenMax.to('.header__icons__menu--bar2',0.5,{y:-6});
+    TweenMax.to('.header__icons__menu',0.5,{rotation:45});
+    toggle = false;
+  }else {
+    TweenMax.to('main',0.5,{ x:0});
+    TweenMax.to('.header__icons__menu--bar1',0.5,{y:0,rotation:0});
+    TweenMax.to('.header__icons__menu--bar2',0.5,{y:0});
+    TweenMax.to('.header__icons__menu',0.5,{rotation:0});
+    toggle = true;
+  }
 });

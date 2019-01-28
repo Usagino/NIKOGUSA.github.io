@@ -5,15 +5,17 @@
 		.product__wrap__imgbox
 			img(:src="img")
 		.product__wrap__text
-			p.product__wrap__text__price ¥ 3,700
-			p.product__wrap__text__name 紅長寿梅 ( 鉢 作家 真山茜氏 )
+			p.product__wrap__text__price ¥{{price}}
+			p.product__wrap__text__name {{name}}
 			p.product__wrap__text__tag 盆栽
 </template>
 
 <script>
 export default {
   props:{
-    img: {}
+    img: {},
+		price:{},
+		name:{}
   }
 }
 </script>
@@ -23,7 +25,16 @@ export default {
 .product {
     max-width: 350px;
     margin: 1rem 0;
-
+		padding: 1rem;
+		border-radius: 1rem;
+		background: white;
+		box-shadow: 16px 16px 0px #00000020;
+		transition: all .3s ease .1s;
+		&:hover{
+			cursor: pointer;
+			transform: translateX(.5rem) translateY(.5rem);
+			box-shadow: 0px 0px 0px #00000020;
+		}
     &__wrap {
         &__imgbox {
             img {
@@ -35,10 +46,10 @@ export default {
           display: inline-flex;
           flex-direction: column;
           justify-content: space-around;
-          height: 100px;
+          height: auto;
           width: 100%;
           & > *{
-
+						padding: .3rem 0;
           }
           &__price {
               color: #c62222;
