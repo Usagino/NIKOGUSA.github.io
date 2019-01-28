@@ -24,6 +24,8 @@ export default {
 <style lang="scss" scoped>
 @import "../stylesheet/_variable.scss";
 .product {
+	transition: all .5s ease-in .7s;
+	opacity: 0;
     max-width: 350px;
     margin: 1rem 0;
 		padding: 1rem;
@@ -60,7 +62,7 @@ export default {
           &__tag {
 
               padding: 0.1rem 1rem;
-              border: solid 0.5px #080808;
+              border: solid 0.5px rgba(#8e8a8a, 0.8);
               display: inline-block;
               border-radius: 100px;
 							width: 3rem;

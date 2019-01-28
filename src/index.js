@@ -7,6 +7,12 @@ import product from './components/product_card.vue';
 import carticon from './components/carticon.vue';
 import shop from './components/shop.vue';
 import customer from './components/customer.vue';
+import hidemenu from './components/hidemenu.vue';
+import cart from './components/cart.vue';
+
+
+let filename = window.location.href.match(".+/(.+?)\.[a-z]+([\?#;].*)?$")[1];
+console.log(filename);
 
 let tl = new TimelineMax();
 Vue.use(VueCarousel);
@@ -21,7 +27,9 @@ new Vue({
     'product': product,
     'carticon': carticon,
     'shop': shop,
-    'customer':customer
+    'customer':customer,
+    'hidemenu':hidemenu,
+    'cart':cart,
   },
 });
 let header_speed = 0.2;
@@ -59,6 +67,7 @@ $('.header__icons__menu').click(function(event) {
     TweenMax.to('.header__icons__menu--bar2',0.5,{y:-6,borderColor:"#000000"});
     TweenMax.to('.header__icons__menu',0.5,{rotation:45});
     TweenMax.to('#cart',0.5,{fill:"#000000"});
+    TweenMax.set('.hidemenu',{zIndex:10,delay : 0.5});
     toggle = false;
   }else {
     TweenMax.to('main',0.5,{ x:0});
@@ -73,12 +82,24 @@ $('.header__icons__menu').click(function(event) {
     });
     TweenMax.to('.header__icons__menu',0.5,{rotation:0});
     TweenMax.to('#cart',0.5,{fill:"#ffffff"});
+    TweenMax.set('.hidemenu',{zIndex:-1});
     toggle = true;
   }
 });
 // TweenMax.set(".talk__wrap",{opacity:0});
-if ($(".voice").length == 1) {
+if ($(".voice").length === 1) {
   inView('.talk__wrap')
+    .on('enter', el => {
+      el.classList.add('opacity');
+    })
+    .on('exit', el => {
+      el.classList.remove('opacity');
+    });
+}
+
+if(filename === "index"){
+  console.log("hello");
+  inView('.product')
     .on('enter', el => {
       el.classList.add('opacity');
     })
