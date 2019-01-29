@@ -201,7 +201,7 @@ main{
     // overflow: hidden;
     width: 72vw;
     height: 72vw;
-    padding: 4rem 0;
+    padding: 4rem 0 5rem;
     margin:auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -212,6 +212,7 @@ main{
     grid-template-areas: "produce produce about-img1" "about-img2 map map" "acsess map map";
     h1{
       font-family: "Sawarabi Mincho" !important;
+      font-size: 3rem;
     }
     & > *{
       box-shadow: 20px 20px 0px #00000030;
